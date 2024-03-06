@@ -1,0 +1,11 @@
+.container{
+    margin-top: 30px;
+}
+
+tr,td,th{
+    padding:5px;
+}
+
+td,th{
+    text-align: center;
+}

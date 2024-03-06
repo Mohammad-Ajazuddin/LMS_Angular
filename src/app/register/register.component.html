@@ -1,0 +1,70 @@
+
+<div class="container">
+<h1 mat-dialog-title>REGISTER</h1>
+<form [formGroup]="regForm" (ngSubmit)="onSubmitRegForm()">
+<div mat-dialog-content class="regForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Role</mat-label>
+    <mat-select formControlName = "role" #roleValue>
+      <mat-option value="MANAGER" name="role">Manager</mat-option>
+      <mat-option value="EMPLOYEE" name="role">Employee</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="text" matInput formControlName="email">
+  </mat-form-field>
+  <p *ngIf="regForm.controls['email'].touched && regForm.get('email')?.hasError('email')" style="color: red; font-style: italic;" >Please enter a valid email</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <p *ngIf="regForm.controls['password'].touched && regForm.get('password')?.hasError('minlength')" style="color: red; font-style: italic;" >Password should have atleast 6 characters</p>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Mobile</mat-label>
+    <!-- <input type="number" matInput formControlName="mobile" minlength="10" maxlength="10"> -->
+    <input type="text" matInput formControlName="mobile">
+  </mat-form-field>
+  <p *ngIf="regForm.controls['mobile'].touched && regForm.get('mobile')?.hasError('pattern')" style="color: red; font-style: italic;" >10 digits Mobile Number!</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Date of Joining</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfJoining">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline" *ngIf="this.roleValue.value=='EMPLOYEE'">
+    <mat-label>Your Manager</mat-label>
+    <mat-select formControlName="managerId">
+        <mat-option *ngFor="let manager of responseArr" [value]="manager.id">
+            {{ manager.name }} - {{manager.id}}
+          </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!regForm.valid">REGISTER</button>
+  <button mat-raised-button color="warn" type="reset">RESET</button>
+</div>
+<!--Error check -- check data & validations-->
+<!-- <button (click)="checkFormControl()">check Form Controls</button> -->
+<div *ngIf="registrationSuccess" style="color: green;padding:5px; text-align: center;">{{ successMessage }}</div>
+<div *ngIf="registrationError" style="color: red; padding:5px; text-align:center;">{{ errorMessage }}</div>
+</form>
+
+</div>

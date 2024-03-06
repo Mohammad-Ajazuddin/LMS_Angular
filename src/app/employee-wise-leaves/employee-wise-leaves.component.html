@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="tableContainer">
+        <table mat-table class="mat-elevation-z8">
+            <tr>
+                <th mat-header-cell>SNo.</th>
+                <th mat-header-cell>EmpID</th>
+                <th mat-header-cell>Employee Name</th>
+                <th mat-header-cell>Applied</th>
+                <th mat-header-cell>Pending</th>
+                <th mat-header-cell>Approved</th>
+                <th mat-header-cell>Rejeceted</th>
+                <th mat-header-cell>EarnedLeaves-Aprd</th>
+                <th mat-header-cell>WithoutPay-Aprd</th>
+                <th mat-header-cell>Sick-Apprd</th>
+                <th mat-header-cell>Casual-Apprd</th>
+                <th mat-header-cell>Paternity-Apprd</th>
+                <th mat-header-cell>EarnedLeavesRejd</th>
+                <th mat-header-cell>WithoutPay-Rejd</th>
+                <th mat-header-cell>Sick-Rejd</th>
+                <th mat-header-cell>Casual-Rejd</th>
+                <th mat-header-cell>Paternity-Rejd</th>
+                <th mat-header-cell>EarnedLeaves-Remaining</th>
+                <th mat-header-cell>WithoutPay-Remaining</th>
+                <th mat-header-cell>Sick-Remaining</th>
+                <th mat-header-cell>Casual-Remaining</th>
+                <th mat-header-cell>Paternity-Remaining</th>
+            </tr>
+
+            <tr *ngFor = "let leaveInfo of responseData;index as i">
+                <td mat-cell>{{i+1}}</td>
+                <td mat-cell>{{leaveInfo[0]}}</td>
+                <td mat-cell>{{leaveInfo[1]}}</td>
+                <td mat-cell>{{leaveInfo[2]}}</td>
+                <td mat-cell>{{leaveInfo[3]}}</td>
+                <td mat-cell>{{leaveInfo[4]}}</td>
+                <td mat-cell>{{leaveInfo[5]}}</td>
+                <td mat-cell>{{leaveInfo[6]}}</td>
+                <td mat-cell>{{leaveInfo[7]}}</td>
+                <td mat-cell>{{leaveInfo[8]}}</td>
+                <td mat-cell>{{leaveInfo[9]}}</td>
+                <td mat-cell>{{leaveInfo[10]}}</td>
+                <td mat-cell>{{leaveInfo[11]}}</td>
+                <td mat-cell>{{leaveInfo[12]}}</td>
+                <td mat-cell>{{leaveInfo[13]}}</td>
+                <td mat-cell>{{leaveInfo[14]}}</td>
+                <td mat-cell>{{leaveInfo[15]}}</td>
+                <td mat-cell>{{leaveInfo[16]}}</td>
+                <td mat-cell>{{leaveInfo[17]}}</td>
+                <td mat-cell>{{leaveInfo[18]}}</td>
+                <td mat-cell>{{leaveInfo[19]}}</td>
+                <td mat-cell>{{leaveInfo[20]}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

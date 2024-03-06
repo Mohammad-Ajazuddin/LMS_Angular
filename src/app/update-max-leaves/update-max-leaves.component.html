@@ -1,0 +1,41 @@
+<div class="container"> 
+    <div class="tableContainer">
+        <table mat-table class="mat-elevation-z8" *ngIf="existingLeaveTypesData">
+          <caption>Existing Leave Types Information</caption>
+            <tr>
+                <th mat-header-cell>SNo.</th>
+                <th mat-header-cell>Leave Type</th>
+                <th mat-header-cell>Maximum Leaves</th>
+            </tr>
+
+            <tr *ngFor = "let data of existingLeaveTypesData;index as i">
+                <td mat-cell>{{i+1}}</td>
+                <td mat-cell>{{data.leaveType}}</td>
+                <td mat-cell>{{data.maximumLeaves}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="formContainer">
+       <form [formGroup]="updateMaxLeaves" (ngSubmit)="onUpdate()">
+        <mat-form-field appearance="outline">
+            <mat-label>Select To Update</mat-label>
+            <mat-select formControlName = "leaveType" #roleValue>
+              <mat-option value="EARNED_LEAVE" name="role">EARNED LEAVE</mat-option>
+              <mat-option value="CASUAL_LEAVE" name="role">CASUAL LEAVE</mat-option>
+              <mat-option value="LEAVE_WITHOUT_PAY" name="role">LEAVE WITHOUT PAY</mat-option>
+              <mat-option value="SICK_LEAVE" name="role">SICK LEAVE</mat-option>
+              <mat-option value="PATERNITY_LEAVE" name="role">PATERNITY LEAVE</mat-option>
+            </mat-select>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Maximum Leaves</mat-label>
+            <input type="text" matInput formControlName="maximumLeaves">
+          </mat-form-field>
+
+          <button mat-raised-button color="accent" [disabled]="!this.updateMaxLeaves.valid">Update</button>
+        </form>
+    </div>
+
+</div>

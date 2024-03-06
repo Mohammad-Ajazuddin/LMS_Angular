@@ -1,0 +1,49 @@
+
+
+
+<div class="container">
+
+    <form [formGroup]="dateWise" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>StartDate</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="startDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>EndDate</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="endDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+          <button mat-raised-button type="submit" style="padding: 17px; height: 100%;">GET LEAVE INFO</button>
+    </form>
+
+    <div class="tableContainer">
+        <!-- <h3>{{formData | json}}</h3>-->
+    <div *ngIf="formValid">
+        <h4 *ngIf="!dataAvailable" style="color: red; font-style: italic;">No leaves Found!</h4>
+    </div>
+        <table mat-table class="mat-elevation-z8" *ngIf="dataAvailable">
+            <tr>
+                <th mat-header-cell>S.No.</th>
+                <th mat-header-cell>Employee Name</th>
+                <th mat-header-cell>Applied</th>
+                <th mat-header-cell>Approved</th>
+                <th mat-header-cell>Rejected</th>
+                <th mat-header-cell>Pending</th>
+            </tr>
+
+            <tr *ngFor = "let leaveInfo of responseData;index as i">
+                <td mat-cell>{{i+1}}</td>
+                <td mat-cell>{{leaveInfo[0]}}</td>
+                <td mat-cell>{{leaveInfo[1]}}</td>
+                <td mat-cell>{{leaveInfo[2]}}</td>
+                <td mat-cell>{{leaveInfo[3]}}</td>
+                <td mat-cell>{{leaveInfo[4]}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

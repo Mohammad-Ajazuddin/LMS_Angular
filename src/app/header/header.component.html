@@ -1,0 +1,35 @@
+<style>
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    /* h3{
+        display: inline-block; 
+        font-family: 'Times New Roman', Times, serif; 
+        background-color:#eee;color:black;border-radius: 3px ; 
+        font-weight:400;
+        padding: 4px;
+    } */
+</style>
+<p>
+    <mat-toolbar color="primary">
+    <a routerLink="">
+      <span>Leave Management System</span>
+    </a>
+      <span class="spacer"></span>
+      <div class="nav-buttons">
+        <a routerLink="/api/auth/login" activatedRouteLink = "active">
+            <button mat-raised-button *ngIf="!isLogin()">Login</button>
+        </a>
+
+            <!-- <h3 *ngIf="isLogin()">Welcome {{name}}</h3> -->
+            <!-- If not refreshed same name is displayed after other user login. Need to figure out -->
+
+            <button mat-raised-button *ngIf="isLogin()" (click)="logout()">Log out</button>
+
+        <a routerLink="/api/auth/register" activatedRouteLink = "active">
+            <button mat-raised-button *ngIf="!isLogin()">Register</button>
+        </a>
+     </div>
+    </mat-toolbar>
+</p>

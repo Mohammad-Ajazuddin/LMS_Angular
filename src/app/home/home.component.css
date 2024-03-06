@@ -1,0 +1,15 @@
+.container{
+  width: 100vw;
+  height: 77vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(6, 21, 51);
+}
+#welcome{
+    font-size: xx-large;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+

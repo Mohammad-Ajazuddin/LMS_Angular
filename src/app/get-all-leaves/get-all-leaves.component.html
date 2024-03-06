@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="tableContainer">
+        <table mat-table class="mat-elevation-z8">
+            <tr>
+                <th mat-header-cell>#No.</th>
+                <th mat-header-cell>#EmployeeID</th>
+                <th mat-header-cell>#LeaveID</th>
+                <th mat-header-cell>#Type</th>
+                <th mat-header-cell>#Reason</th>
+                <th mat-header-cell>#StartDate</th>
+                <th mat-header-cell>#EndDate</th>
+                <th mat-header-cell>#Staus</th>
+                <th mat-header-cell>#Comment</th>
+            </tr>
+ 
+            <tr *ngFor = "let leave of responseData;index as i">
+                <td mat-cell>{{i+1}}</td>
+                <td mat-cell>{{leave.employeeId}}</td>
+                <td mat-cell>{{leave.id}}</td>
+                <td mat-cell>{{leave.type}}</td>
+                <td mat-cell>{{leave.reason}}</td>
+                <td mat-cell>{{leave.startDate}}</td>
+                <td mat-cell>{{leave.endDate}}</td>
+                
+                <td mat-cell *ngIf="leave.status=='PENDING'" style="color: goldenrod;">{{leave.status}}</td>
+                <td mat-cell *ngIf="leave.status=='APPROVED'" style="color: green;">{{leave.status}}</td>
+                <td mat-cell *ngIf="leave.status=='REJECTED'" style="color: red;">{{leave.status}}</td>
+
+                <td mat-cell>{{leave.comment}}</td>
+            </tr>
+           
+        </table>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div mat-dialog-title>
+        <h1>LOGIN</h1>
+    </div>
+
+<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+    <div mat-dialog-content class="loginForm"> 
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email"> 
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+    </div>
+    <div matDialogActions>
+        <button mat-raised-button color="primary" type="submit">LOGIN</button>
+    </div>
+</form>
+</div>

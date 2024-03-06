@@ -1,0 +1,20 @@
+<div class="nav-buttons">
+    <a routerLink="{{managerId}}/leaves" activatedRouteLink = "active">
+        <button mat-raised-button >View Leaves</button>
+    </a>
+    <a routerLink="/manager/{{managerId}}/getEmployeeWiseLeaves" activatedRouteLink = "active">
+        <button mat-raised-button >View Employee Wise Leave stats</button>
+    </a>
+
+        <!-- <input type="date" [(ngModel)]="startDate" [(ngModel)]="startDate">
+        <input type="date" [(ngModel)]="endDate" [(ngModel)]="endDate">
+        <button mat-raised-button [disabled]="(!startDate) && (!endDate)"  (click)="setDates()">Get Datewise View</button> -->
+
+    <a routerLink="/manager/{{managerId}}/getDateWiseLeaves" activatedRouteLink = "active">
+        <button mat-raised-button >Get Date Wise Leaves</button>
+    </a>
+    <a routerLink="/manager/{{managerId}}/updateLeaveType" activatedRouteLink = "active">
+        <button mat-raised-button >Update Max Leaves</button>
+    </a>
+ </div>
+ <router-outlet></router-outlet>

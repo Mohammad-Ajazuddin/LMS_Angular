@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div>
+        <h1>Welcome {{name | uppercase}}</h1>
+    </div>
+<div class="formContainer">
+<form [formGroup]="applyLeave" (ngSubmit)="onSubmit()">
+    <div class="applyForm"> 
+
+        <mat-form-field appearance="outline">
+            <mat-label>Reason</mat-label>
+            <input type="text" matInput name="reason" formControlName="reason"> 
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Leave Type</mat-label>
+            <mat-select formControlName="type">
+              <mat-option value="EARNED_LEAVE" name="type">Earned Leave</mat-option>
+              <mat-option value="CASUAL_LEAVE" name="type">Casual Leave</mat-option>
+              <mat-option value="SICK_LEAVE" name="type">Sick Leave</mat-option>
+              <mat-option value="LEAVE_WITHOUT_PAY" name="type">Leave without pay</mat-option>
+              <mat-option value="PATERNITY_LEAVE" name="type">Paternity Leave</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startDate" formControlName="startDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endDate" formControlName="endDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+    </div>
+    <div matDialogActions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!this.applyLeave.valid">APPLY</button>
+    </div>
+</form>
+</div>
+</div>
